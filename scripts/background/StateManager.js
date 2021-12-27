@@ -7,6 +7,7 @@ function StateManager() {
 
 	let self = this;
 
+	let locals = {};
 	let options = {};
 	let callbacks = {};
 
@@ -32,6 +33,7 @@ function StateManager() {
 		printDebug("Activating StateManager");
 
 		isKKTime = timeKeeper.getDay() == 6 && timeKeeper.getHour() >= 20;
+		getLocalOptions();
 		getSyncedOptions(() => {
 			if (!badgeManager) badgeManager = new BadgeManager(this.registerCallback, options.enableBadgeText);
 
@@ -65,7 +67,7 @@ function StateManager() {
 	// Possible events include:
 	// volume, kkStart, hourMusic, gameChange, weatherChange, pause, tabAudio, musicFailed
 	function notifyListeners(event, args) {
-		if (!options.paused || event === "pause" || event === "volume") {
+		if (!locals.paused || event === "pause" || event === "volume") {
 			var callbackArr = callbacks[event] || [];
 			for (var i = 0; i < callbackArr.length; i++) {
 				callbackArr[i].apply(window, args);
@@ -82,6 +84,17 @@ function StateManager() {
 		return options.weather == 'live';
 	}
 
+	// Retrieves all local options, which are then stored in the 'locals' variable
+	// Default values to use if absent are specified
+	function getLocalOptions(callback) {
+		chrome.storage.local.get({
+			paused: false
+		}, items => {
+			locals = items;
+			if (typeof callback === 'function') callback();
+		});
+	}
+
 	// Retrieves all synced options, which are then stored in the 'options' variable
 	// Default values to use if absent are specified
 	function getSyncedOptions(callback) {
@@ -93,7 +106,6 @@ function StateManager() {
 			enableKK: true,
 			alwaysKK: false,
 			kkVersion: 'live',
-			paused: false,
 			enableTownTune: true,
 			absoluteTownTune: false,
 			townTuneVolume: 0.75,
@@ -163,7 +175,7 @@ function StateManager() {
 			let musicAndWeather = getMusicAndWeather();
 			notifyListeners("hourMusic", [hour, musicAndWeather.weather, musicAndWeather.music, true]);
 			// Play hourly tune when paused, but only if town tune is enabled
-			if (options.paused && (options.absoluteTownTune && options.enableTownTune)) townTuneManager.playTune(tabAudio.audible);
+			if (locals.paused && (options.absoluteTownTune && options.enableTownTune)) townTuneManager.playTune(tabAudio.audible);
 		}
 	});
 
@@ -177,6 +189,8 @@ function StateManager() {
 		let oldTabAudio = this.getOption("tabAudio");
 		let oldTabAudioReduce = this.getOption("tabAudioReduceValue");
 		let oldBadgeTextEnabled = this.getOption("enableBadgeText");
+		// Trigger 'locals' variable update
+		getLocalOptions();
 		// Trigger 'options' variable update
 		getSyncedOptions(() => {
 			// Detect changes and notify corresponding listeners
@@ -216,9 +230,9 @@ function StateManager() {
 	});
 
 	function toggleMusic() {
-		chrome.storage.sync.set({ paused: !options.paused }, function () {
-			getSyncedOptions(() => {
-				if (options.paused) notifyListeners("pause");
+		chrome.storage.local.set({ paused: !locals.paused }, function () {
+			getLocalOptions(() => {
+				if (locals.paused) notifyListeners("pause");
 				else self.activate();
 			});
 		});

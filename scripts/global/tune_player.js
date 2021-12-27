@@ -4,15 +4,15 @@
   // var frequencies      = [null,  null, 350,  392,  440,  494,  523,  587,  659,  698,  784,  880,  988, 1046, 1174, 1318, "random"];
      var frequencies      = [null,  null, 392,  440,  494,  523,  587,  659,  698,  784,  880,  988, 1046, 1174, 1318, "random"];
   // ^ values in HZ
-  
-  
+
+
   /**
    * @function createBooper
    * @desc  Creates & returns instrument (playNote method) used to play each note in the town tune, when it's played or updated in the town-tune editor
-   * @param {*} audioContext 
+   * @param {*} audioContext
    * @returns {method} playNote
    */
-  var createBooper = function(audioContext) { 
+  var createBooper = function(audioContext) {
 	var instrumentName = 'booper';
     var attack = 0.05;  //in seconds
     var decay = 0.1;    //in seconds
@@ -20,20 +20,20 @@
     var gainLevel = 3;
     var sustainLevel = 2;
     var cutoffModifier = 8;
-    var Q = 0; 
-    
-    
+    var Q = 0;
+
+
     var pitchToFreq = function(pitch) {
       if (typeof pitch == 'number') return pitch;
-      
+
       index = availablePitches.indexOf(pitch);
       if (index == -1) return null; // Pitch does not exist in register
-      
+
       var freq = frequencies[index];
-      
+
       // Generating random frequency
-      if(freq == "random") freq = frequencies[ 2 + Math.floor( Math.random() * (frequencies.length - 3) ) ];  
-      
+      if(freq == "random") freq = frequencies[ 2 + Math.floor( Math.random() * (frequencies.length - 3) ) ];
+
       if (!freq) return null; // Pitch not assigned to a frequency
 
       return freq;
@@ -80,11 +80,11 @@
     }
   };
 
-  
+
 /**
  * @function createSampler
  * @desc  Creates & returns instrument (playNote method) used to play each note in the town tune, when it's played at the hour
- * @param {*} audioContext 
+ * @param {*} audioContext
  * @returns {method} playNote
  */
 var createSampler = function(audioContext) {
@@ -113,7 +113,7 @@ var createSampler = function(audioContext) {
     var req = new XMLHttpRequest();
     req.responseType = 'arraybuffer';
     req.onload = reqListener;
-    req.open("get", chrome.extension.getURL('../sound/bells.ogg'), true);
+    req.open("get", chrome.runtime.getURL('../sound/bells.ogg'), true);
     req.send();
   };
 
@@ -127,21 +127,21 @@ var createSampler = function(audioContext) {
     if (!bellBuffer) return;
     var source = audioContext.createBufferSource();
     source.buffer = bellBuffer;
-    
+
     // If pitch is '?', randomizing pitch
     if(pitch == '?') pitch = availablePitches[ 2 + Math.floor( Math.random() * (availablePitches.length - 3) ) ]
-    
+
     volume *= 0.5;
     // The notes sound broken & not accurate to the editor's volume when played at higher volumes, vol is therefore reduced with this multiplier.
-      
+
     // Configuring gain
     gain = audioContext.createGain();
     gain.gain.value = volume;
-    
+
     // Playing audio
     source.connect(gain);
     gain.connect(audioContext.destination);
-    source.start(time, pitchToStartPoint(pitch), chimeLength); 
+    source.start(time, pitchToStartPoint(pitch), chimeLength);
   };
 
   initStartPoints();
@@ -157,9 +157,9 @@ var createSampler = function(audioContext) {
 /**
  * @function createTunePlayer
  * @desc  Creates & returns object responsible for handling the playing of entire town tunes at the hour and in the editor.
- * @param {*} audioContext 
- * @param {*} bpm 
- * @returns {object} tunePlayer 
+ * @param {*} audioContext
+ * @param {*} bpm
+ * @returns {object} tunePlayer
  */
 var createTunePlayer = function(audioContext, bpm) {
   var defaultBpm = 240.0; // BPM
@@ -184,32 +184,32 @@ var createTunePlayer = function(audioContext, bpm) {
     } while(current == sustain)
     return count;
   };
-  
+
   var playTune = function(tune, instrument, bpm, volume) {
     var callbacks, i, pitch, time, sustainDuration;
     var stepDuration = getStepDuration(instrument, bpm);
     var eachNote = function(index, duration) {};
     if(!bpm) bpm = defaultBpm;
-    
+
     for (i = 0; i < tune.length; i++) {
       time = stepDuration * i;
-      
+
       //when a note is played
       (function(index) {
         setTimeout(function(){
           eachNote(index, stepDuration);
         }, time * 1000);
       })(i);
-      
+
       pitch = tune[i];
       if(pitch == rest || pitch == sustain) continue;
-      
+
       sustainDuration = getSustainMultiplier(i, tune) * stepDuration;
-      
+
       // Plays a note using:
-      //   At the hour:  createSampler.playNote() method 
+      //   At the hour:  createSampler.playNote() method
       //   In the editor: createBooper.playNote() method
-      instrument.playNote(pitch, audioContext.currentTime + time, sustainDuration, volume); 
+      instrument.playNote(pitch, audioContext.currentTime + time, sustainDuration, volume);
     }
 
     //jQuery stlye chain callbacks

@@ -82,7 +82,7 @@
 .chrome-bootstrap h2,
 .chrome-bootstrap h3,
 .chrome-bootstrap h4 {
-  -webkit-user-select: none;
+  user-select: none;
   font-weight: normal;
   line-height: 1;
 }
@@ -98,6 +98,9 @@
   -webkit-margin-after: 1em;
   -webkit-margin-before: 21px;
   -webkit-margin-start: 23px;
+  -moz-margin-after: 1em;
+  -moz-margin-before: 21px;
+  -moz-margin-start: 23px;
   height: 18px;
   font-size: 18px;
 }
@@ -117,8 +120,10 @@
 .chrome-bootstrap .frame .navigation {
   height: 100%;
   -webkit-margin-start: 0;
+  -moz-margin-start: 0;
   position: fixed;
   -webkit-margin-end: 15px;
+  -moz-margin-end: 15px;
   width: 155px;
   z-index: 3;
 }
@@ -139,6 +144,7 @@
 }
 .chrome-bootstrap .frame .view {
   -webkit-margin-start: 155px;
+  -moz-margin-start: 155px;
 }
 .chrome-bootstrap .frame .view a {
   font: inherit;
@@ -146,6 +152,8 @@
 .chrome-bootstrap .frame .mainview > * {
   -webkit-margin-start: -20px;
   -webkit-transition: margin 100ms, opacity 100ms;
+  -moz-margin-start: -20px;
+  -moz-transition: margin 100ms, opacity 100ms;
   width: 80%;
   opacity: 0;
   z-index: 0;
@@ -157,12 +165,15 @@
   -webkit-margin-start: 0;
   -webkit-transition: margin 200ms, opacity 200ms;
   -webkit-transition-delay: 100ms;
+  -moz-margin-start: 0;
+  -moz-transition: margin 200ms, opacity 200ms;
+  -moz-transition-delay: 100ms;
   z-index: 1;
   opacity: 1;
 }
 .chrome-bootstrap header {
   position: fixed;
-  background-image: -webkit-linear-gradient(#ffffff, #ffffff 40%, rgba(255, 255, 255, 0.92));
+  background-image: linear-gradient(#ffffff, #ffffff 40%, rgba(255, 255, 255, 0.92));
   width: 50%;
   min-width: 600px;
   z-index: 2;
@@ -187,11 +198,13 @@
 }
 .chrome-bootstrap section {
   -webkit-padding-start: 18px;
+  -moz-padding-start: 18px;
   margin-bottom: 24px;
   margin-top: 8px;
 }
 .chrome-bootstrap section h3 {
   -webkit-margin-start: -18px;
+  -moz-margin-start: -18px;
 }
 .chrome-bootstrap section .row {
   display: block;
@@ -200,13 +213,15 @@
 .chrome-bootstrap .controls {
   -webkit-padding-end: 3px;
   -webkit-padding-start: 4px;
-  -webkit-transition: padding 100ms, height 100ms, opacity 100ms;
+  -moz-padding-end: 3px;
+  -moz-padding-start: 4px;
+  transition: padding 100ms, height 100ms, opacity 100ms;
   border-bottom: 1px solid #EEE;
   display: -webkit-box;
   overflow: hidden;
   padding: 13px 0;
   position: relative;
-  
+
   margin-bottom: 25px;
   padding-top: 7px;
 }
@@ -215,7 +230,7 @@
   margin-top: 4px;
 }
 .chrome-bootstrap .controls .spacer {
-  -webkit-box-flex: 1;
+  box-flex: 1;
 }
 .chrome-bootstrap ol.pagination li {
   margin: 0 2px;
@@ -278,18 +293,26 @@
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
   -webkit-padding-start: 40px;
+  -moz-margin-before: 1em;
+  -moz-margin-after: 2em;
+  -moz-margin-start: 0px;
+  -moz-margin-end: 0px;
+  -moz-padding-start: 40px;
   list-style-type: none;
   padding: 0;
 }
 .chrome-bootstrap ul.menu li {
   -webkit-border-start: 6px solid transparent;
   -webkit-padding-start: 18px;
-  -webkit-user-select: none;
+  -moz-border-start: 6px solid transparent;
+  -moz-padding-start: 18px;
+  user-select: none;
   display: list-item;
-  text-align: -webkit-match-parent;
+  text-align: match-parent;
 }
 .chrome-bootstrap ul.menu li.selected {
   -webkit-border-start-color: #4e5764;
+  -moz-border-start-color: #4e5764;
 }
 .chrome-bootstrap ul.menu li.selected a {
   color: #464E5A;
@@ -310,6 +333,7 @@
   border-bottom: 5px solid transparent;
   border-left: 6px solid #999;
   -webkit-margin-end: 4px;
+  -moz-margin-end: 4px;
   top: 1px;
 }
 .chrome-bootstrap .arrow_expand {
@@ -317,6 +341,7 @@
   border-right: 5px solid transparent;
   border-top: 7px solid #999;
   -webkit-margin-end: 4px;
+  -moz-margin-end: 4px;
 }
 .chrome-bootstrap .arrow {
   width: 0;
@@ -331,7 +356,7 @@
   opacity: 0;
   height: 14px;
   width: 14px;
-  -webkit-transition: 150ms opacity;
+  transition: 150ms opacity;
   background-color: transparent;
   text-indent: -5000px;
   position: absolute;
@@ -385,8 +410,8 @@
   padding: 0;
 }
 .chrome-bootstrap .highlightable li .action {
-  -webkit-appearance: none;
-  -webkit-transition: opacity 150ms;
+  appearance: none;
+  transition: opacity 150ms;
   background: #8AAAED;
   border: none;
   border-radius: 2px;
@@ -398,7 +423,6 @@
   position: absolute;
   top: 8px;
   right: 32px;
-  -webkit-transition: 150ms opacity;
   cursor: pointer;
 }
 .chrome-bootstrap .highlightable li .action:hover {
@@ -406,6 +430,7 @@
 }
 .chrome-bootstrap .highlightable li .highlightable {
   -webkit-margin-start: 30px;
+  -moz-margin-start: 30px;
 }
 .chrome-bootstrap .highlightable.editable .delete {
   position: absolute;
@@ -425,9 +450,9 @@
 .chrome-bootstrap input[type='radio'],
 .chrome-bootstrap input[type='button'],
 .chrome-bootstrap button {
-  -webkit-appearance: none;
-  -webkit-user-select: none;
-  background-image: -webkit-linear-gradient(#ededed, #ededed 38%, #dedede);
+  appearance: none;
+  user-select: none;
+  background-image: linear-gradient(#ededed, #ededed 38%, #dedede);
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 2px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.75);
@@ -441,7 +466,7 @@
   min-height: 1em;
 }
 .chrome-bootstrap input[type='checkbox']:checked::before {
-  -webkit-user-select: none;
+  user-select: none;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wDBhYcG79aGIsAAACbSURBVBjTjdFBCkFhFAXgj4fp24PBy0SZ2ICRXRgYGb2xlKzBSEo2YgsiKWVoZgFKMjD5X/2Ux6lb99bpnNO5lKMR5i8MsEQHkhJiEzlS9HCqfiFWMUIt3AfsC3KKLCL30Qr7HfM4Ro4h6rhiEqmusIMKuphGqo+ogSPGcbYLzh91vdkXSHDDBk+0gxussS3rNcMCs+D6E18/9gLPPhbDshfzLgAAAABJRU5ErkJggg==");
   background-size: 100% 100%;
   content: '';
@@ -450,7 +475,7 @@
   width: 100%;
 }
 .chrome-bootstrap html[dir='rtl'] input[type='checkbox']:checked::before {
-  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 .chrome-bootstrap input[type='radio']:checked::before {
   background-color: #666;
@@ -464,12 +489,14 @@
   top: 3px;
 }
 .chrome-bootstrap select {
-  -webkit-appearance: none;
+  appearance: none;
   -webkit-padding-end: 20px;
   -webkit-padding-start: 6px;
+  -moz-padding-end: 20px;
+  -moz-padding-start: 6px;
   /* OVERRIDE */
 
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAWklEQVQokWNgoAOIAuI0PDiKaJMSgYCZmfkbkPkfHYPEQfJEG/b//3+FBQsWLGRjY/uJbBCIDxIHyRNtGDYDyTYI3UA+Pr4vFBmEbODbt2+bKDYIyUBWYtQBAIRzRP/XKJ//AAAAAElFTkSuQmCC), -webkit-linear-gradient(#ededed, #ededed 38%, #dedede);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAWklEQVQokWNgoAOIAuI0PDiKaJMSgYCZmfkbkPkfHYPEQfJEG/b//3+FBQsWLGRjY/uJbBCIDxIHyRNtGDYDyTYI3UA+Pr4vFBmEbODbt2+bKDYIyUBWYtQBAIRzRP/XKJ//AAAAAElFTkSuQmCC), linear-gradient(#ededed, #ededed 38%, #dedede);
   background-position: right center;
   background-repeat: no-repeat;
 }
@@ -500,6 +527,8 @@
 .chrome-bootstrap button {
   -webkit-padding-end: 10px;
   -webkit-padding-start: 10px;
+  -moz-padding-end: 10px;
+  -moz-padding-start: 10px;
   min-height: 2em;
   min-width: 4em;
 }
@@ -530,7 +559,7 @@
 .chrome-bootstrap button:focus {
   /* OVERRIDE */
 
-  -webkit-transition: border-color 200ms;
+  transition: border-color 200ms;
   /* We use border color because it follows the border radius (unlike outline).
        * This is particularly noticeable on mac. */
 
@@ -539,7 +568,7 @@
 }
 .chrome-bootstrap button:disabled,
 .chrome-bootstrap select:disabled {
-  background-image: -webkit-linear-gradient(#f1f1f1, #f1f1f1 38%, #e6e6e6);
+  background-image: linear-gradient(#f1f1f1, #f1f1f1 38%, #e6e6e6);
   border-color: rgba(80, 80, 80, 0.2);
   box-shadow: 0 1px 0 rgba(80, 80, 80, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.75);
   color: #aaa;
@@ -548,7 +577,7 @@
 .chrome-bootstrap select:disabled {
   /* OVERRIDE */
 
-  background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAAXNSR0IArs4c6QAAAAd0SU1FB9sLAxYEBKriBmwAAAAGYktHRAD/AP8A/6C9p5MAAAAJcEhZcwAACxMAAAsTAQCanBgAAABLSURBVCiRY2CgA4gC4jQ8OIpokxKBoKGh4T8uDJIn2rD///8rLFiwYCE2g0DiIHkSfIndQLIMwmYgRQYhG/j27dsmig1CMpCVGHUAo8FcsHfxfXQAAAAASUVORK5CYII=") 1 x), -webkit-linear-gradient(#f1f1f1, #f1f1f1 38%, #e6e6e6);
+  background-image: image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAAXNSR0IArs4c6QAAAAd0SU1FB9sLAxYEBKriBmwAAAAGYktHRAD/AP8A/6C9p5MAAAAJcEhZcwAACxMAAAsTAQCanBgAAABLSURBVCiRY2CgA4gC4jQ8OIpokxKBoKGh4T8uDJIn2rD///8rLFiwYCE2g0DiIHkSfIndQLIMwmYgRQYhG/j27dsmig1CMpCVGHUAo8FcsHfxfXQAAAAASUVORK5CYII=") 1 x), linear-gradient(#f1f1f1, #f1f1f1 38%, #e6e6e6);
 }
 .chrome-bootstrap input[type='checkbox']:disabled + label,
 .chrome-bootstrap input[type='radio']:disabled + label {
@@ -563,30 +592,30 @@
 .chrome-bootstrap input[type='checkbox']:hover:enabled,
 .chrome-bootstrap input[type='radio']:hover:enabled,
 .chrome-bootstrap button:hover:enabled {
-  background-image: -webkit-linear-gradient(#f0f0f0, #f0f0f0 38%, #e0e0e0);
+  background-image: linear-gradient(#f0f0f0, #f0f0f0 38%, #e0e0e0);
   border-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.95);
   color: black;
 }
 .chrome-bootstrap select:hover:enabled {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAWklEQVQokWNgoAOIAuI0PDiKaJMSgYCZmfkbkPkfHYPEQfJEG/b//3+FBQsWLGRjY/uJbBCIDxIHyRNtGDYDyTYI3UA+Pr4vFBmEbODbt2+bKDYIyUBWYtQBAIRzRP/XKJ//AAAAAElFTkSuQmCC"), -webkit-linear-gradient(#f0f0f0, #f0f0f0 38%, #e0e0e0);
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAWklEQVQokWNgoAOIAuI0PDiKaJMSgYCZmfkbkPkfHYPEQfJEG/b//3+FBQsWLGRjY/uJbBCIDxIHyRNtGDYDyTYI3UA+Pr4vFBmEbODbt2+bKDYIyUBWYtQBAIRzRP/XKJ//AAAAAElFTkSuQmCC"), linear-gradient(#f0f0f0, #f0f0f0 38%, #e0e0e0);
 }
 .chrome-bootstrap select:active:enabled,
 .chrome-bootstrap input[type='checkbox']:active:enabled,
 .chrome-bootstrap input[type='radio']:active:enabled,
 .chrome-bootstrap button:active:enabled {
-  background-image: -webkit-linear-gradient(#e7e7e7, #e7e7e7 38%, #d7d7d7);
+  background-image: linear-gradient(#e7e7e7, #e7e7e7 38%, #d7d7d7);
   box-shadow: none;
   text-shadow: none;
 }
 .chrome-bootstrap select:active:enabled {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAWklEQVQokWNgoAOIAuI0PDiKaJMSgYCZmfkbkPkfHYPEQfJEG/b//3+FBQsWLGRjY/uJbBCIDxIHyRNtGDYDyTYI3UA+Pr4vFBmEbODbt2+bKDYIyUBWYtQBAIRzRP/XKJ//AAAAAElFTkSuQmCC"), -webkit-linear-gradient(#e7e7e7, #e7e7e7 38%, #d7d7d7);
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAWklEQVQokWNgoAOIAuI0PDiKaJMSgYCZmfkbkPkfHYPEQfJEG/b//3+FBQsWLGRjY/uJbBCIDxIHyRNtGDYDyTYI3UA+Pr4vFBmEbODbt2+bKDYIyUBWYtQBAIRzRP/XKJ//AAAAAElFTkSuQmCC"), linear-gradient(#e7e7e7, #e7e7e7 38%, #d7d7d7);
 }
 .chrome-bootstrap .overlay {
-  -webkit-box-align: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-pack: center;
-  -webkit-transition: opacity .2s;
+  box-align: center;
+  box-orient: vertical;
+  box-pack: center;
+  transition: opacity .2s;
   background-color: rgba(255, 255, 255, 0.75);
   bottom: 0;
   display: -webkit-box;
@@ -603,12 +632,12 @@
   opacity: 0;
 }
 .chrome-bootstrap .overlay.transparent .page {
-  -webkit-transform: scale(0.99) translateY(-20px);
+  transform: scale(0.99) translateY(-20px);
 }
 .chrome-bootstrap .overlay .page {
-  -webkit-border-radius: 3px;
-  -webkit-box-orient: vertical;
-  -webkit-transition: 200ms -webkit-transform;
+  border-radius: 3px;
+  box-orient: vertical;
+  transition: 200ms transform;
   background: white;
   box-shadow: 0 4px 23px 5px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
   color: #333;
@@ -620,27 +649,28 @@
 }
 @-webkit-keyframes pulse {
   0% {
-    -webkit-transform: scale(1);
+    transform: scale(1);
   }
   40% {
-    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
   }
   60% {
-    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
   }
   100% {
-    -webkit-transform: scale(1);
+    transform: scale(1);
   }
 }
 .chrome-bootstrap .overlay .page.pulse {
-  -webkit-animation-duration: 180ms;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-name: pulse;
-  -webkit-animation-timing-function: ease-in-out;
+  animation-duration: 180ms;
+  animation-iteration-count: 1;
+  animation-name: pulse;
+  animation-timing-function: ease-in-out;
 }
 .chrome-bootstrap .overlay .page h1 {
   -webkit-padding-end: 24px;
-  -webkit-user-select: none;
+  -moz-padding-end: 24px;
+  user-select: none;
   color: #333;
   font-size: 120%;
   margin: 0;
@@ -654,7 +684,7 @@
   padding: 2px 5px;
 }
 .chrome-bootstrap .overlay .page .content-area {
-  -webkit-box-flex: 1;
+  box-flex: 1;
   overflow: auto;
   padding: 6px 17px 6px;
 }
@@ -672,9 +702,9 @@
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAAnUlEQVR4XoWQQQ6CQAxFewjkJkMCyXgJPMk7AiYczyBeZEAX6AKctGIaN+bt+trk9wtGQc/IkhnoKGxqqiWxOSZalapWFZ6VrIUDExsN0a5JRBq9LoVOR0eEQMoEhKizXhhsn0p1sCWVo7CwOf1RytPL8CPvwuBUoHL6ugeK30CVD1TqK7V/hdpe+VNChhOzV8xWny/+xosHF8578W/Hmc1OOC3wmwAAAABJRU5ErkJggg==');
 }
 .chrome-bootstrap .overlay .page .action-area {
-  -webkit-box-align: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: end;
+  box-align: center;
+  box-orient: horizontal;
+  box-pack: end;
   display: -webkit-box;
   padding: 14px 17px;
 }
@@ -682,10 +712,11 @@
   display: -webkit-box;
 }
 .chrome-bootstrap .overlay .page .button-strip {
-  -webkit-box-orient: horizontal;
+  box-orient: horizontal;
   display: -webkit-box;
 }
 .chrome-bootstrap .overlay .page .button-strip button {
   -webkit-margin-start: 10px;
+  -moz-margin-start: 10px;
   display: block;
 }

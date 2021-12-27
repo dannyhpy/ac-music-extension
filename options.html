@@ -17,6 +17,7 @@
 	<style>
 		.chrome-bootstrap .frame .view {
 			-webkit-margin-start: 180px;
+			-moz-margin-start: 180px;
 		}
 	</style>
 </head>
@@ -40,8 +41,7 @@
 				</li>
 			</ul>
 
-			<table class="nav-buttons">
-				<td><a target="_blank" href="https://chrome.google.com/webstore/detail/animal-crossing-music/fcedlaimpcfgpnfdgjbmmfibkklpioop"><button type="button" class="nav-button" title="Chrome Webstore"><img src="img/social/webstore.png" /></button></a></td>
+			<table class="nav-buttons nav-buttons-2">
 				<td><a target="_blank" href="https://discord.gg/4FMrEF8"><button type="button" class="nav-button" title="Discord Server"><img src="img/social/discord.png" /></button></a></td>
 				<td><a target="_blank" href="https://github.com/animal-crossing-music-extension/ac-music-extension"><button type="button" class="nav-button" title="GitHub"><img src="img/social/github.png" /></button></a></td>
 			</table>
@@ -174,7 +174,7 @@
 						<h3>Other</h3>
 						<p>Other various options that don't fit in any other category</p>
 						<div class="checkbox">
-							<input id="enable-notifications" type="checkbox"><label for="enable-notifications"><span></span>Enable Chrome notifications on song change</label>
+							<input id="enable-notifications" type="checkbox"><label for="enable-notifications"><span></span>Enable browser notifications on song change</label>
 						</div>
 
 						<div class="checkbox">
@@ -182,7 +182,7 @@
 						</div>
 
 						<div class="checkbox">
-							<input id="enable-background" type="checkbox"><label for="enable-background"><span></span>Allow for music to play when Chrome is closed. <a target="_blank" href="https://kb.nmsu.edu/73071">Background apps must also be enabled in Chrome's settings.</a></label>
+							<input id="enable-background" type="checkbox"><label for="enable-background"><span></span>Allow for music to play when the browser is closed. <a target="_blank" href="https://kb.nmsu.edu/73071">Background apps must also be enabled in the browser's settings.</a></label>
 						</div>
 					</section>
 
@@ -301,7 +301,7 @@
 						<li>Fixed a bug causing the music to not click over to the next hour and get stuck on a single hour</li>
 						<li>Overhauled about page</li>
 						<li>Changed API endpoints and domain</li>
-						<li>Added a built-in option to stop the extension from playing music when Chrome is closed</li>
+						<li>Added a built-in option to stop the extension from playing music when the browser is closed</li>
 						<li>Added an option to edit the town tune's volume</li>
 						<li>Updated the default town tune</li>
 						<li>Overhauled Town Tune Editor</li>

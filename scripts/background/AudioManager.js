@@ -228,7 +228,7 @@ function AudioManager(addEventListener, isTownTune) {
 		else {
 			window.notify("pause", [tabAudioPaused]);
 			if (killLoopTimeout) killLoopTimeout();
-			if (!tabAudioPaused) chrome.storage.sync.set({ paused: true });
+			if (!tabAudioPaused) chrome.storage.local.set({ paused: true });
 		}
 	}
 
